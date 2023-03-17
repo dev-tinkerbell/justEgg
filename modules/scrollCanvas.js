@@ -44,7 +44,7 @@ export function scrollCanvas() {
       start: 'top top',
       end: 'bottom bottom',
       scrub: true,
-      markers: true,
+      // markers: true,
     },
 
     onUpdate: render, // use animation onUpdate instead of scrollTrigger's onUpdate
