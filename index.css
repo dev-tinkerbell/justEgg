@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  background-color: black;
+  height: 400vh;
+}
+
+.canvas-wrap {
+  position: relative;
+  width: 100vw;
+  height: 300vh;
+}
+
+canvas {
+  position: sticky;
+  left: 0;
+  top: 0;
+}
