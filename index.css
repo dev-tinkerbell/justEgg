@@ -80,7 +80,7 @@ canvas {
 .lessLand-wrap {
   position: relative;
   width: 100vw;
-  height: 300vh;
+  height: 700vh;
 }
 
 .content-wrap {
@@ -127,6 +127,7 @@ canvas {
   left: 0;
   width: 100vw;
   overflow: hidden;
+  display: none;
 }
 
 .img-wrap {
