@@ -20,7 +20,6 @@ html {
 
 body {
   margin: 0;
-  background-color: rgb(73, 103, 45);
   font-size: 1.8rem;
 
   /* height: 800vh; */
@@ -64,6 +63,7 @@ i {
   top: 0;
   width: inherit;
   height: 100vh;
+  overflow: hidden;
 }
 
 .canvas-wrap h2 {
@@ -71,9 +71,6 @@ i {
   left: 0;
   top: 0;
   z-index: 10;
-}
-
-canvas {
 }
 
 /* less land section */
@@ -96,7 +93,9 @@ canvas {
   flex-direction: column;
   justify-content: space-between;
 
+  position: relative;
   box-sizing: border-box;
+  z-index: 30;
 }
 
 .content-wrap h2 {
@@ -121,37 +120,52 @@ canvas {
   justify-self: end;
 }
 
-.visual {
+.img-outWrap {
   position: absolute;
-  top: 0;
-  left: 0;
+  z-index: 50;
   width: 100vw;
+  height: 100vh;
   overflow: hidden;
-  display: none;
 }
 
-.img-wrap {
-  position: relative;
-  z-index: 10;
+.img-outWrap .img-innerWrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: left top;
+}
+
+.img-outWrap img {
+  width: 100vw;
+}
+
+picture {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .boxes {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 20;
 }
 
-.visual .box {
+.box {
   position: absolute;
   overflow: hidden;
   width: calc(100%);
   height: calc(100%);
 }
 
-.visual .box .inner {
+.box .inner {
   position: absolute;
   top: 0;
   left: 0;
@@ -160,46 +174,46 @@ canvas {
   background: #fffdfa;
 }
 
-.visual .box.two {
+.box.two {
   left: 50%;
 }
 
-.visual .box.five,
-.visual .box.nine,
-.visual .box.one {
+.box.five,
+.box.nine,
+.box.one {
   right: 0;
   top: 0;
 }
 
-.visual .box.eigh,
-.visual .box.fou {
+.box.eigh,
+.box.fou {
   left: 0;
   top: 0;
 }
 
-.visual .box.six,
-.visual .box.two {
-  top: 0;
+.box.six,
+.box.two {
+  top: -1px;
   right: 0;
 }
 
-.visual .box.five > .inner,
-.visual .box.nine > .inner,
-.visual .box.one > .inner {
+.box.five > .inner,
+.box.nine > .inner,
+.box.one > .inner {
   width: calc(50% - 1px);
   border-right: 1px solid #bbb;
   transform: translateX(-100%);
 }
 
-.visual .box.six > .inner,
-.visual .box.two > .inner {
-  height: calc(50% - 1px);
+.box.six > .inner,
+.box.two > .inner {
+  height: 50%;
   border-bottom: 1px solid #bbb;
   transform: translateY(-100%);
 }
 
-.visual .box.seven > .inner,
-.visual .box.three > .inner {
+.box.seven > .inner,
+.box.three > .inner {
   width: calc(50% - 1px);
   left: auto;
   right: 0;
@@ -209,8 +223,8 @@ canvas {
   transform: translateX(100%);
 }
 
-.visual .box.eight > .inner,
-.visual .box.four > .inner {
+.box.eight > .inner,
+.box.four > .inner {
   height: calc(50% - 1px);
   top: auto;
   bottom: 0;
@@ -218,19 +232,19 @@ canvas {
   transform: translateY(100%);
 }
 
-.visual .box.odd {
+.box.odd {
   width: calc(50%);
-  height: calc(100%);
+  height: calc(100% + 1px);
 }
 
-.visual .box.even {
-  width: calc(100%);
+.box.even {
+  width: calc(100% + 1px);
   height: calc(50%);
 }
 
-.visual .box.seven,
-.visual .box.three {
-  left: -1px;
+.box.seven,
+.box.three {
+  left: 0px;
   bottom: -1px;
 }
 /* .box.odd {
@@ -239,7 +253,3 @@ canvas {
 .box.even {
   background-color: blueviolet;
 } */
-
-.four.box {
-  display: none;
-}
