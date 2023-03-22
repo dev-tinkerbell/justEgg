@@ -59,7 +59,7 @@ export function scrollCanvas() {
       0,
       0,
       window.innerWidth,
-      (window.innerWidth / 16) * 9
+      (window.innerWidth / 16) * 2
     );
   }
 }
