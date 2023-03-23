@@ -55,6 +55,8 @@ i {
   position: relative;
   width: 100vw;
   height: 300vh;
+
+  background-color: rgb(28, 64, 28);
 }
 
 .sticky-wrap {
@@ -66,11 +68,15 @@ i {
   overflow: hidden;
 }
 
-.canvas-wrap h2 {
+canvas {
   position: absolute;
-  left: 0;
   top: 0;
-  z-index: 10;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  -o-object-fit: cover;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 /* less land section */
@@ -247,9 +253,3 @@ picture {
   left: 0px;
   bottom: -1px;
 }
-/* .box.odd {
-  background-color: bisque;
-}
-.box.even {
-  background-color: blueviolet;
-} */

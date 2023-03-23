@@ -4,16 +4,13 @@ export function scrollCanvas() {
   const canvas = document.getElementById('hero-lightpass');
   const context = canvas.getContext('2d');
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
   const images = [];
   const seed = {
     frame: 0,
   };
 
-  const frameCount = 10;
-  // const frameCount = 336;
+  // const frameCount = 10;
+  const frameCount = 336;
   const currentFrame = (index) => {
     const domainURL = `https://assets.ju.st/static/frames/v5/Learn-04-Sprout/`;
     const desktopJpg = `desktop-jpg/`;
@@ -54,12 +51,6 @@ export function scrollCanvas() {
   function render() {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    context.drawImage(
-      images[seed.frame],
-      0,
-      0,
-      window.innerWidth,
-      (window.innerWidth / 16) * 9
-    );
+    context.drawImage(images[seed.frame], 0, 0, 1920, 1080);
   }
 }
