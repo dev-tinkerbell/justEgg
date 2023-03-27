@@ -48,6 +48,7 @@ export function scrollCanvas() {
         context.drawImage(image, 0, 0, 1920, 1080);
       });
     }
+
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(imageFrames[seed.frame], 0, 0, 1920, 1080);
   };
@@ -75,7 +76,7 @@ export function scrollCanvas() {
         end: 'bottom bottom',
         scrub: true,
 
-        onUpdate: () => renderCanvas('gsap'),
+        onUpdate: () => renderCanvas(),
         onLeave: () => {
           ScrollTrigger.removeEventListener('scrollEnd', scollEndEvent);
         },
@@ -90,8 +91,8 @@ export function scrollCanvas() {
   };
 
   // 초기 세팅
+  renderCanvas();
   imageFrames[0].addEventListener('load', () => {
-    renderCanvas('init');
     setSequenceAnimation();
   });
 }

@@ -1,7 +1,26 @@
 export function scrollScaleImage() {
   gsap.defaults({ ease: 'none' });
 
-  // content 스크롤 애니메이션
+  const matchMedia = (vars) => {
+    let mm = gsap.matchMedia();
+    let breakPoint = 820;
+
+    return mm.add(
+      {
+        isDesktop: `(min-width: ${
+          breakPoint + 1
+        }px) and (prefers-reduced-motion: no-preference)`,
+        isMobile: `(max-width: ${breakPoint}px) and (prefers-reduced-motion: no-preference)`,
+      },
+      (context) => {
+        let { isDesktop } = context.conditions;
+        const result = vars(isDesktop);
+
+        createScrollTrigger(result);
+      }
+    );
+  };
+
   // 스크롤 트리거 animation 생성 함수
   const createScrollTrigger = (vars) => {
     const properties = {
@@ -21,6 +40,7 @@ export function scrollScaleImage() {
     numberElement.textContent = number;
   };
 
+  // num 스크롤 트리거 생성
   createScrollTrigger({
     onUpdate: ({ progress }) => {
       const number = Math.floor(progress.toFixed(2) * 83);
@@ -28,95 +48,120 @@ export function scrollScaleImage() {
     },
   });
 
-  // sub detaile 타임라인
-  const subDetailTimeline = gsap.timeline();
-  subDetailTimeline.fromTo(
-    '.sub-detail',
-    {
-      opacity: 0,
-      y: 30,
-    },
-    {
-      opacity: 1,
-      y: 0,
-    }
-  );
-
-  // sub detaile 스크롤 트리거 생성
-  createScrollTrigger({
-    animation: subDetailTimeline,
-    start: '9% top',
-    end: '11% top',
-    scrub: 1,
-  });
-
-  // img-outWrap 타임라인
-  const ImgWrapTimeline = gsap.timeline();
-  ImgWrapTimeline.to('.img-outWrap', {
-    x: '50%',
-    duration: 1,
-  }).to('.img-outWrap', {
-    duration: 8,
+  // sub-detail 스크롤 트리거 생성
+  matchMedia((isDesktop) => {
+    return {
+      // sub detail 타임라인
+      animation: gsap.timeline().fromTo(
+        '.sub-detail',
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+        }
+      ),
+      start: `${isDesktop ? '9% top' : '37% top'}`,
+      end: '11% top',
+      scrub: 1,
+    };
   });
 
   // img-outWrap 스크롤 트리거 생성
-  createScrollTrigger({ animation: ImgWrapTimeline });
-
-  // img-innerWrap 타임라인
-  const createImgTimeline = () => {
-    const imgTimeline = gsap.timeline();
-    const motions = [
-      { x: '-5%' },
-      { y: '10%', scale: 0.92 },
-      { y: '20%', scale: 0.84 },
-      { y: '20%', scale: 0.84 },
-      { scale: 0.77 },
-      { y: '30%', scale: 0.7 },
-      { y: '40%', scale: 0.62 },
-      { x: '-1%', scale: 0.52 },
-      { scale: 0.47 },
-      { scale: 0.43 },
-    ];
-
-    for (let index = 0; index < motions.length; index++) {
-      imgTimeline.to('.img-outWrap .img-innerWrap', motions[index]);
-    }
-
-    return imgTimeline;
-  };
+  matchMedia((isDesktop) => {
+    return {
+      // img-outWrap 타임라인
+      animation: gsap
+        .timeline()
+        .to('.img-outWrap', {
+          x: '50%',
+          duration: 1,
+        })
+        .to('.img-outWrap', {
+          duration: `${isDesktop ? 8 : 5}`,
+        }),
+    };
+  });
 
   // img-innerWrap 스크롤 트리거 생성
-  createScrollTrigger({ animation: createImgTimeline() });
+  matchMedia((isDesktop) => {
+    // img-innerWrap 타임라인
+    const setImgTimeline = (isDesktop) => {
+      const imgTimeline = gsap.timeline();
+      const motions = {
+        desktop: [
+          { x: '-3%' },
+          { y: '10%', scale: 0.95 },
+          { y: '20%', scale: 0.9 },
+          { y: '25%', scale: 0.84 },
+          { y: '30%', scale: 0.77 },
+          { y: '35%', scale: 0.7 },
+          { y: '40%', scale: 0.62 },
+          { scale: 0.52 },
+          { scale: 0.47 },
+          { x: '-1%', scale: 0.43 },
+        ],
+        mobile: [
+          { x: '-3%' },
+          { y: '10%', scale: 0.95 },
+          { y: '20%', scale: 0.9 },
+          { y: '25%', scale: 0.84 },
+          { y: '30%', scale: 0.77 },
+          { y: '35%', scale: 0.7 },
+        ],
+      };
+      const currentView = isDesktop ? motions.desktop : motions.mobile;
 
-  // picture 타임라인
-  const pictureTimeline = gsap.timeline();
-  pictureTimeline
-    .to('.img-outWrap picture', {
-      x: '-33.5%',
-      duration: 1,
-    })
-    .to('.img-outWrap picture', {
-      duration: 8,
-    });
+      for (let index = 0; index < currentView.length; index++) {
+        imgTimeline.to('.img-outWrap .img-innerWrap', currentView[index]);
+      }
+
+      return imgTimeline;
+    };
+
+    return {
+      animation: setImgTimeline(isDesktop),
+    };
+  });
 
   // picture 스크롤 트리거 생성
-  createScrollTrigger({ animation: pictureTimeline });
+  matchMedia((isDesktop) => {
+    return {
+      // picture 타임라인
+      animation: gsap
+        .timeline()
+        .to('.img-outWrap picture', {
+          x: '-33.5%',
+          duration: 1,
+        })
+        .to('.img-outWrap picture', {
+          duration: `${isDesktop ? 8 : 5}`,
+        }),
+    };
+  });
 
-  const getBoxes = () => {
+  // boxes inner elements 배열 생성
+  const getBoxes = (isDesktop) => {
     let currentBox = document.querySelector('.box.one');
     let boxes = [];
 
     while (currentBox?.children.length) {
+      if (!isDesktop && currentBox.classList.value.includes('seven')) break;
+
       boxes = [...boxes, currentBox.children[0]];
       currentBox = currentBox.children[1];
     }
+
     return boxes;
   };
 
-  const createBoxTimeline = () => {
+  // boxes 타임라인
+  const createBoxTimeline = (isDesktop) => {
     const boxTimeline = gsap.timeline();
     const motions = [{ x: '0%' }, { y: '0%' }];
-    const boxes = getBoxes();
+    const boxes = getBoxes(isDesktop);
 
     boxes.forEach((box, index) => {
       if (index === 0) {
@@ -130,5 +175,8 @@ export function scrollScaleImage() {
     return boxTimeline;
   };
 
-  createScrollTrigger({ animation: createBoxTimeline() });
+  // boxes 스크롤 트리거 생성
+  matchMedia((isDesktop) => {
+    return { animation: createBoxTimeline(isDesktop) };
+  });
 }
