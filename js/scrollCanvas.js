@@ -66,7 +66,7 @@ const setSequenceAnimation = () => {
       trigger: '.canvas-wrap',
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 1,
+      scrub: true,
 
       onUpdate: () => renderCanvas(),
       onEnter: () => scrollTriggerAddEvnet(),
