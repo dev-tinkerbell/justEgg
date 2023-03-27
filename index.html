@@ -9,12 +9,21 @@
   </head>
   <body>
     <h1 class="a11y-hidden">just egg</h1>
-    <!-- <section class="canvas-wrap">
+    <section class="loading">
+      <div class="spinner-box">
+        <div class="pulse-container">
+          <div class="pulse-bubble pulse-bubble-1"></div>
+          <div class="pulse-bubble pulse-bubble-2"></div>
+          <div class="pulse-bubble pulse-bubble-3"></div>
+        </div>
+      </div>
+    </section>
+    <section class="canvas-wrap">
       <div class="sticky-wrap">
         <h2 class="a11y-hidden">How do we make eggs from plants?</h2>
         <canvas id="hero-lightpass" width="1920" height="1080"></canvas>
       </div>
-    </section> -->
+    </section>
     <section class="lessLand-wrap">
       <div class="sticky-wrap">
         <div class="img-outWrap">
@@ -103,6 +112,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
-    <script src="./index.js" type="module"></script>
+    <script src="./modules/scrollCanvas.js"></script>
+    <script src="./modules/scrollScaleImage.js"></script>
   </body>
 </html>
