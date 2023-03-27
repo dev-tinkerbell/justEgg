@@ -2,10 +2,10 @@ export function scrollScaleImage() {
   gsap.defaults({ ease: 'none' });
 
   const matchMedia = (vars) => {
-    let mm = gsap.matchMedia();
+    let gsapMatchMedia = gsap.matchMedia();
     let breakPoint = 820;
 
-    return mm.add(
+    return gsapMatchMedia.add(
       {
         isDesktop: `(min-width: ${
           breakPoint + 1
@@ -63,8 +63,8 @@ export function scrollScaleImage() {
           y: 0,
         }
       ),
-      start: `${isDesktop ? '9% top' : '37% top'}`,
-      end: '11% top',
+      start: `${isDesktop ? '9% top' : '53% top'}`,
+      end: `${isDesktop ? '11% top' : '56% top'}`,
       scrub: 1,
     };
   });
@@ -104,12 +104,12 @@ export function scrollScaleImage() {
           { x: '-1%', scale: 0.43 },
         ],
         mobile: [
-          { x: '-3%' },
+          { x: '-10%' },
           { y: '10%', scale: 0.95 },
-          { y: '20%', scale: 0.9 },
-          { y: '25%', scale: 0.84 },
-          { y: '30%', scale: 0.77 },
-          { y: '35%', scale: 0.7 },
+          { y: '20%', scale: 0.8 },
+          { y: '25%', scale: 0.7 },
+          { y: '30%', scale: 0.6 },
+          { y: '40%', scale: 0.55 },
         ],
       };
       const currentView = isDesktop ? motions.desktop : motions.mobile;

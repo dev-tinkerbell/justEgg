@@ -359,13 +359,19 @@ picture {
     max-width: none;
   }
 
+  .img-outWrap img {
+    transform: translateY(-5%);
+  }
+
   .box.two {
     top: -25vh;
     height: calc(100% + 2px + 25vh);
   }
+
   .box.four > .inner {
     height: calc(75% - 1px);
   }
+
   .box.five {
     height: 25%;
   }
