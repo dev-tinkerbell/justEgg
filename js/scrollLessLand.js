@@ -1,6 +1,6 @@
 gsap.defaults({ ease: 'none' });
 
-// gsap 미디어쿼리
+// gsap 반응형
 const matchMedia = (vars) => {
   let gsapMatchMedia = gsap.matchMedia();
   let breakPoint = 820;

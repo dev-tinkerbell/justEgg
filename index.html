@@ -9,8 +9,11 @@
   </head>
   <body>
     <h1 class="a11y-hidden">just egg</h1>
+
+    <!-- loading -->
     <section class="loading">
       <div class="spinner-box">
+        <h2 class="a11y-hidden">로딩중</h2>
         <div class="pulse-container">
           <div class="pulse-bubble pulse-bubble-1"></div>
           <div class="pulse-bubble pulse-bubble-2"></div>
@@ -18,12 +21,16 @@
         </div>
       </div>
     </section>
+
+    <!-- scrollCanvas -->
     <section class="canvas-wrap">
       <div class="sticky-wrap">
         <h2 class="a11y-hidden">How do we make eggs from plants?</h2>
         <canvas id="hero-lightpass" width="1920" height="1080"></canvas>
       </div>
     </section>
+
+    <!-- scrollLessLand -->
     <section class="lessLand-wrap">
       <div class="sticky-wrap">
         <div class="img-outWrap">
@@ -114,6 +121,6 @@
 
     <!-- js -->
     <script src="./js/scrollCanvas.js"></script>
-    <script src="./js/scrollScaleImage.js"></script>
+    <script src="./js/scrollLessLand.js"></script>
   </body>
 </html>
