@@ -43,3 +43,7 @@ https://dev-tinkerbell.github.io/justEgg/
   이유: 각각 ScrollTrigger가 생성된다면 kill, 이벤트 추가 등 해당 ScrollTrigger만 제어하고 싶음
 
   현재: ScrollTrigger는 `[ScrollTrigger, ScrollTrigger,ScrollTrigger, ScrollTrigger]`으로 ScrollTrigger 배열 전체가 나옴
+
+- 세팅한 timeline 보는 방법 찾지 못함
+
+  이유: for문으로 생성한 timeline이 의도대로 설정되었는지 확인하고 싶음
