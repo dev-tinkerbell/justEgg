@@ -85,7 +85,7 @@ const createSequenceAnimation = () => {
 
 // scrollCanvas 초기 세팅
 const init = () => {
-  renderCanvas();
+  renderCanvas(true);
   createSequenceAnimation();
 
   const loading = document.querySelector('.loading');
