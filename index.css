@@ -1,10 +1,12 @@
 :root {
   --cl-yellow: #ffb819;
   --cl-black: #000;
-  --grid-columns: 16;
-  --grid-columns-cookies: 16;
+
+  --grid-columns: 48;
+  --grid-columns-cookies: 33;
+  --grid-side-margin: 8rem;
+
   --grid-column-gap: 0px;
-  --grid-side-margin: 0px;
   --scrollbar-width: 0px;
   --grid-max-width: 1523.5px;
   --grid-width-input: calc(
@@ -76,15 +78,15 @@ i {
 }
 
 .pulse-container {
-  width: 120px;
+  width: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .pulse-bubble {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: var(--cl-black);
 }
@@ -211,10 +213,9 @@ canvas {
 
 .img-outWrap img {
   position: absolute;
-  top: 0;
+  top: -10%;
   left: 0;
   width: 100%;
-  height: 100%;
   height: 110%;
   -o-object-fit: cover;
   object-fit: cover;
@@ -240,8 +241,8 @@ picture {
 .box {
   position: absolute;
   overflow: hidden;
-  width: calc(100%);
-  height: calc(100%);
+  width: 100%;
+  height: 100%;
 }
 
 .box .inner {
@@ -253,10 +254,6 @@ picture {
   background: #fffdfa;
 }
 
-.box.two {
-  left: 50%;
-}
-
 .box.five,
 .box.nine,
 .box.one {
@@ -264,16 +261,20 @@ picture {
   top: 0;
 }
 
-.box.eigh,
-.box.fou {
-  left: 0;
-  top: 0;
-}
-
 .box.six,
 .box.two {
   top: -1px;
   right: 0;
+}
+
+.box.two {
+  left: 50%;
+}
+
+.box.eigh,
+.box.fou {
+  left: 0;
+  top: 0;
 }
 
 .box.five > .inner,
@@ -328,12 +329,6 @@ picture {
 }
 
 @media only screen and (min-width: 1200px) {
-  :root {
-    --grid-columns: 48;
-    --grid-columns-cookies: 33;
-    --grid-side-margin: 8rem;
-  }
-
   html {
     min-height: 0;
     font-size: clamp(7.5px, 0.625vw, 11px);
@@ -341,12 +336,6 @@ picture {
 }
 
 @media only screen and (min-width: 821px) and (max-width: 1199px) {
-  :root {
-    --grid-columns: 48;
-    --grid-columns-cookies: 33;
-    --grid-side-margin: 8rem;
-  }
-
   html {
     font-size: clamp(7.5px, 0.7142857143vw, 20px);
   }
@@ -367,6 +356,9 @@ picture {
     --cursor-icon-width: 2.9rem;
     --cursor-icon-height: 3.2rem;
     --cursor-icon-offset: 0.3rem;
+    --grid-columns: 16;
+    --grid-columns-cookies: 16;
+    --grid-side-margin: 0px;
   }
 
   html {
@@ -402,6 +394,7 @@ picture {
   }
 
   .img-outWrap img {
+    top: 0;
     transform: translateY(-5%);
   }
 
