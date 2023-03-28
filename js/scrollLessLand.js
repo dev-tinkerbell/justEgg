@@ -1,11 +1,8 @@
-gsap.defaults({ ease: 'none' });
-
 // gsap 반응형
-const matchMedia = (vars) => {
-  let gsapMatchMedia = gsap.matchMedia();
+const matchMedia = (setVars) => {
   let breakPoint = 820;
 
-  return gsapMatchMedia.add(
+  return gsap.matchMedia().add(
     {
       isDesktop: `(min-width: ${
         breakPoint + 1
@@ -14,9 +11,9 @@ const matchMedia = (vars) => {
     },
     (context) => {
       let { isDesktop } = context.conditions;
-      const result = vars(isDesktop);
+      const vars = setVars(isDesktop);
 
-      createScrollTrigger(result);
+      createScrollTrigger(vars);
     }
   );
 };
@@ -63,7 +60,7 @@ matchMedia((isDesktop) => {
         y: 0,
       }
     ),
-    start: `${isDesktop ? '9% top' : '53% top'}`,
+    start: `${isDesktop ? '9.5% top' : '53% top'}`,
     end: `${isDesktop ? '11% top' : '56% top'}`,
     scrub: 1,
   };
