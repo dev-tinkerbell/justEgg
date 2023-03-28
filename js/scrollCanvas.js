@@ -1,25 +1,25 @@
-// ------ 고민 : drawImage 사이즈 변경은 성능 이슈 됨
 const canvas = document.getElementById('hero-lightpass');
 const context = canvas.getContext('2d');
-const seed = { frame: 0 };
-const domainURL = `https://assets.ju.st/static/frames/v5/Learn-04-Sprout/`;
-// const frameCount = 36;
-const frameCount = 336;
 const imageType = {
   normalImage: 'normalImage',
   highresImage: 'highresImage',
 };
+const frameCount = 30;
+// const frameCount = 336;
+const seed = { frame: 0 };
+gsap.defaults({ ease: 'none' });
 
 // 이미지 생성
 const createImage = (type, index) => {
-  const image = new Image();
+  const domainURL = `https://assets.ju.st/static/frames/v5/Learn-04-Sprout/`;
   const normalImageURL = `${domainURL}desktop-jpg/Learn-04-Sprout`;
   const highresImageURL = `${domainURL}desktop-highres-jpg/Learn-04-Sprout`;
-
   const imageURL =
     type === imageType.normalImage ? normalImageURL : highresImageURL;
 
+  const image = new Image();
   image.src = `${imageURL}${index.toString().padStart(3, '0')}.jpg`;
+
   return image;
 };
 
@@ -36,32 +36,37 @@ const setImageFrames = () => {
 // canvas에 이미지 그리기
 const imageFrames = setImageFrames();
 const renderCanvas = (isEnd = false) => {
+  const drawImage = (image) => {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(image, 0, 0, 1920, 1080);
+  };
+
   if (isEnd) {
     const image = createImage(imageType.highresImage, seed.frame);
 
-    image.addEventListener('load', function () {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(image, 0, 0, 1920, 1080);
+    image.addEventListener('load', () => {
+      drawImage(image);
     });
+
+    return;
   }
 
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(imageFrames[seed.frame], 0, 0, 1920, 1080);
+  drawImage(imageFrames[seed.frame], 0, 0, 1920, 1080);
 };
 
-// 스크롤 애니메이션 생성
-const setSequenceAnimation = () => {
+// 시퀀스 애니메이션 생성
+const createSequenceAnimation = () => {
   // 스크롤이 끝났을 때
-  const scollEndEvent = () => renderCanvas(true);
+  const scrollEndEvent = () => renderCanvas(true);
   const scrollTriggerAddEvnet = () =>
-    ScrollTrigger.addEventListener('scrollEnd', scollEndEvent);
+    ScrollTrigger.addEventListener('scrollEnd', scrollEndEvent);
   const scrollTriggerRemoveEvnet = () =>
-    ScrollTrigger.removeEventListener('scrollEnd', scollEndEvent);
+    ScrollTrigger.removeEventListener('scrollEnd', scrollEndEvent);
 
+  // 스크롤 트리거 animation 생성
   return gsap.to(seed, {
     frame: frameCount - 1,
     snap: 'frame',
-    ease: 'none',
     scrollTrigger: {
       trigger: '.canvas-wrap',
       start: 'top top',
@@ -72,17 +77,17 @@ const setSequenceAnimation = () => {
       onEnter: () => scrollTriggerAddEvnet(),
       onEnterBack: () => scrollTriggerAddEvnet(),
       onLeave: () => {
-        scollEndEvent();
+        scrollEndEvent();
         scrollTriggerRemoveEvnet();
       },
     },
   });
 };
 
-// 초기 세팅
+// scrollCanvas 초기 세팅
 const init = () => {
   renderCanvas();
-  setSequenceAnimation();
+  createSequenceAnimation();
 
   const loading = document.querySelector('.loading');
   loading.classList.add('active');
