@@ -4,8 +4,7 @@ const imageType = {
   normalImage: 'normalImage',
   highresImage: 'highresImage',
 };
-const frameCount = 30;
-// const frameCount = 336;
+const frameCount = 336;
 const seed = { frame: 0 };
 gsap.defaults({ ease: 'none' });
 
