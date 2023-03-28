@@ -128,7 +128,8 @@ i {
   overflow: hidden;
 }
 
-canvas {
+canvas,
+video {
   position: absolute;
   top: 0;
   left: 0;
@@ -137,6 +138,10 @@ canvas {
   -o-object-fit: cover;
   object-fit: cover;
   pointer-events: none;
+}
+
+video {
+  opacity: 0;
 }
 
 /* less land section */

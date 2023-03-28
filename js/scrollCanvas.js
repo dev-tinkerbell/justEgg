@@ -25,7 +25,7 @@ const createImage = (type, index) => {
 // 이미지 프레임 배열 세팅
 const setImageFrames = () => {
   let imageFrames = [];
-  for (let index = 0; index < frameCount; index++) {
+  for (let index = seed.frame; index < frameCount; index++) {
     imageFrames = [...imageFrames, createImage(imageType.normalImage, index)];
   }
 
@@ -83,10 +83,29 @@ const createSequenceAnimation = () => {
   });
 };
 
+// 비디오 애니메이션 생성
+const createVideoAnimation = () => {
+  // 스크롤 트리거 animation 생성
+  const video = document.querySelector('video');
+  return gsap.to(video, {
+    scrollTrigger: {
+      trigger: '.canvas-wrap',
+      start: `bottom-=${window.innerHeight} top`,
+      end: 'bottom bottom',
+      scrub: true,
+
+      onEnter: () => video.play(),
+      onLeaveBack: () => video.pause(),
+    },
+    opacity: 1,
+  });
+};
+
 // scrollCanvas 초기 세팅
 const init = () => {
   renderCanvas(true);
   createSequenceAnimation();
+  createVideoAnimation();
 
   const loading = document.querySelector('.loading');
   loading.classList.add('active');
