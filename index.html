@@ -4,123 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>just egg</title>
+    <title>deep link test</title>
     <link href="./index.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1 class="a11y-hidden">just egg</h1>
+    <div class="container">
+      <h1>deep link test</h1>
 
-    <!-- loading -->
-    <section class="loading">
-      <div class="spinner-box">
-        <h2 class="a11y-hidden">로딩중</h2>
-        <div class="pulse-container">
-          <div class="pulse-bubble pulse-bubble-1"></div>
-          <div class="pulse-bubble pulse-bubble-2"></div>
-          <div class="pulse-bubble pulse-bubble-3"></div>
-        </div>
+      <div>
+        <a href="https://www.samsung.com/global/galaxy/apps/samsung-health/" class="desktop_deeplink">Samsung Health Home 화면 딥링크</a>
+        <a href="https://shealth.samsung.com/deepLink?sc_id=app.main&action=view&destination=me" class="mobile_deeplink">Samsung Health Home 화면 딥링크</a>
+
+        <a href="https://www.samsung.com/global/galaxy/apps/samsung-health/" class="desktop_deeplink">[Buds Only] Mindfulness</a>
+        <a href="https://shealth.samsung.com/deepLink?sc_id=mindfulness&action=view&destination=meditate" class="mobile_deeplink">[Buds Only] Mindfulness</a>
       </div>
-    </section>
-
-    <!-- scrollCanvas -->
-    <section class="canvas-wrap">
-      <div class="sticky-wrap">
-        <h2 class="a11y-hidden">How do we make eggs from plants?</h2>
-        <canvas id="hero-lightpass" width="1920" height="1080"></canvas>
-      </div>
-    </section>
-
-    <!-- scrollLessLand -->
-    <section class="lessLand-wrap">
-      <div class="sticky-wrap">
-        <div class="img-outWrap">
-          <div class="img-innerWrap">
-            <picture
-              ><source
-                srcset="https://assets.ju.st/static/learn/land.webp"
-                media="(min-width: 1200px)"
-                type="image/webp" />
-              <source
-                srcset="https://assets.ju.st/static/learn/land.jpg"
-                media="(min-width: 1200px)"
-                type="image/jpeg" />
-              <source
-                srcset="https://assets.ju.st/static/learn/land.webp"
-                media="(min-width: 821px)"
-                type="image/webp" />
-              <source
-                srcset="https://assets.ju.st/static/learn/land.jpg"
-                media="(min-width: 821px)"
-                type="image/jpeg" />
-              <source
-                srcset="https://assets.ju.st/static/learn/land-mobile.webp"
-                media="(min-width: 320px)"
-                type="image/webp" />
-              <source
-                srcset="https://assets.ju.st/static/learn/land-mobile.jpg"
-                media="(min-width: 320px)"
-                type="image/jpeg" />
-              <img
-                src="https://assets.ju.st/static/learn/land-mobile.jpg"
-                alt="Land"
-                class="asset"
-            /></picture>
-          </div>
-        </div>
-        <div class="boxes">
-          <div class="box one">
-            <div class="inner"></div>
-            <div class="box odd two">
-              <div class="inner"></div>
-              <div class="box even three">
-                <div class="inner"></div>
-                <div class="box odd four">
-                  <div class="inner"></div>
-                  <div class="box even five">
-                    <div class="inner"></div>
-                    <div class="box odd six">
-                      <div class="inner"></div>
-                      <div class="box even seven">
-                        <div class="inner"></div>
-                        <div class="box odd eight">
-                          <div class="inner"></div>
-                          <div class="box even nine">
-                            <div class="inner"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content-wrap">
-          <div class="inner">
-            <h2>
-              JUST Egg uses
-              <p>
-                <span class="num"><i>83</i>%</span>
-                <span>less land</span>
-              </p>
-            </h2>
-            <p class="sub-detail">
-              More than three-quarters of the world’s farmable land goes to
-              animal agriculture, yet it produces just 18% of our calories. By
-              making JUST Egg directly from plants, we use 83% less land.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- gsap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    </div>
 
     <!-- js -->
-    <script src="./js/scrollCanvas.js"></script>
-    <script src="./js/scrollLessLand.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
