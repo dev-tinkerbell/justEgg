@@ -10,16 +10,42 @@
   <body>
     <div class="container">
       <h1>deep link test</h1>
-      <h2 class="desktop_deeplink">Desktop</h2>
-      <h2 class="mobile_deeplink">Mobile</h2>
+      <h2>
+        <span class="desktop_deeplink">Desktop</span>
+        <span class="mobile_deeplink">Mobile</span>
+      </h2>
 
-      <div>
-        <a href="https://www.samsung.com/global/galaxy/apps/samsung-health/" class="desktop_deeplink">Samsung Health Home 화면 딥링크</a>
-        <a href="https://shealth.samsung.com/deepLink?sc_id=app.main&action=view&destination=me" class="mobile_deeplink">Samsung Health Home 화면 딥링크</a>
-
-        <a href="https://www.samsung.com/global/galaxy/apps/samsung-health/" class="desktop_deeplink">[Buds Only] Mindfulness</a>
-        <a href="https://shealth.samsung.com/deepLink?sc_id=mindfulness&action=view&destination=meditate" class="mobile_deeplink">[Buds Only] Mindfulness</a>
-      </div>
+      <table>
+        <tr>
+          <th></th>
+          <th>Samsung Health Home</th>
+          <th>[Buds Only] Mindfulness</th>
+        </tr>
+        <tr>
+          <td>테스트</td>
+          <td>
+            <a href="https://www.samsung.com/global/galaxy/apps/samsung-health/" class="desktop_deeplink">딥링크</a>
+            <a href="https://shealth.samsung.com/deepLink?sc_id=app.main&action=view&destination=me" class="mobile_deeplink">딥링크</a>
+          </td>
+          <td>
+            <a href="https://www.samsung.com/global/galaxy/apps/samsung-health/" class="desktop_deeplink">딥링크</a>
+            <a href="https://shealth.samsung.com/deepLink?sc_id=mindfulness&action=view&destination=meditate" class="mobile_deeplink">딥링크</a>
+          </td>
+        </tr>
+        <tr class="offer">
+          <td>iOS 제안</td>
+          <td>
+            <a href="https://www.samsung.com/global/galaxy/apps/samsung-health/" class="desktop_deeplink">딥링크</a>
+            <a href="https://shealth.samsung.com/deepLink?sc_id=app.main&action=view&destination=me" class="mobile_deeplink">딥링크</a>
+            <a href="https://apps.apple.com/us/app/samsung-health/id1224541484" class="ios_deeplink">딥링크</a>
+          </td>
+          <td>
+            <a href="https://www.samsung.com/global/galaxy/apps/samsung-health/" class="desktop_deeplink">딥링크</a>
+            <a href="https://shealth.samsung.com/deepLink?sc_id=mindfulness&action=view&destination=meditate" class="mobile_deeplink">딥링크</a>
+            <a href="https://apps.apple.com/us/app/samsung-health/id1224541484" class="ios_deeplink">딥링크</a>
+          </td>
+        </tr>
+      </table>
     </div>
 
     <!-- js -->

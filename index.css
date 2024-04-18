@@ -62,7 +62,25 @@ a {
   display: block;
 }
 
-.mobile_deeplink {
+table {
+  border-spacing: 0px;
+  padding: 10px;
+}
+
+th {
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+td {
+  width: 30%;
+  text-align: left;
+  padding: 5px;
+  border: 1px solid #ddd;
+}
+
+.mobile_deeplink,
+.ios_deeplink {
   display: none;
 }
 
@@ -72,4 +90,12 @@ a {
 
 .isTouchDevice .desktop_deeplink {
   display: none;
+}
+
+.isTouchDevice.isIosDevice .offer .mobile_deeplink {
+  display: none;
+}
+
+.isTouchDevice.isIosDevice .offer .ios_deeplink {
+  display: block;
 }
